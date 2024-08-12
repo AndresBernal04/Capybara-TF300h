@@ -1,5 +1,51 @@
+
+.body{
+    background-color: var(--grisOscuro);
+}
+
 .imgCarrusel{
     height: 500px;
     width: 100%;
     background-color: var(--azulOscuro);
+}
+
+.seccionSobreNosotros{
+    margin-top: 80px;
+}
+
+p{
+    color: var(--blanco);
+    font-size: 25px;
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+
+h1{
+    font-size: 60px;
+    text-align: center;
+    color: var(--turquesa);
+    margin-bottom: 20px;
+}
+.margen{
+    margin-top: 80px;
+}
+
+
+.espacio1{
+    margin-right: 200px;
+ 
+}
+
+.espacio2{
+    margin-left: 200px;
+}
+
+h2{
+    color: var(--turquesa);
+    font-size: 40px;
+}
+
+.parrafo1{
+    text-align: justify;
 }
