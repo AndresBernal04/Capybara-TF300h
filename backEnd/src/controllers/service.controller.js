@@ -1,7 +1,6 @@
 
 import { serviceModel } from "../models/service.model.js";
 
-
 // POST -> crear servicio
 export const postService = async (request, response) => {
     try{
@@ -36,7 +35,7 @@ export const getServices = async (request, response) => {
         return response.status(200).json({
             estado: "200",
             mensaje: "Estos son todos los servicios encontrados",
-            cantidadUsuarios: allServices.length,
+            cantidadServicios: allServices.length,
             usuarios: allServices 
 
         })
@@ -44,7 +43,7 @@ export const getServices = async (request, response) => {
     } catch (error) {
         return response.status(400).json({
             estado: "400",
-            mensaje: "Ocurrió un problema al buscar los usuario",
+            mensaje: "Ocurrió un problema al buscar los servicios",
             datos: error.message || error 
         })
     }

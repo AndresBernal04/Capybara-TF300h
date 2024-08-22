@@ -21,14 +21,45 @@ const auth = (requiredRole) => {
         if (!token) {
             return res.status(401).json({
                 mensaje: "No se encontró un token"
-            })
+            });
         }
 
-        // next -> indica que debe seguir con el siguiente intermediario o controlador
-        next();
+
+
+        // Se extrae el token que se necesita, quitando la palabra Bearer
+        token = token.split(" ")[1];
+        if(!token){
+            return res.status(400).json({
+                mensaje: 'Token no autorizado'
+            });
+        }
+
+        // Verificación del token
+        try {
+
+            console.log("Token", token);
+            // Se decodifica el token
+            const decoded = await verifyToken(token);
+            console.log("Token decodificado: ", decoded);
+            console.log(requiredRole);
+
+            // Validación de rol
+            // if (requiredRole == 'admin' && ) {
+            //     mensaje: 'Acceso denegado, no tiene permisos de administrador'
+            // }
+            // req.user = decoded;
+
+
+            // next -> indica que debe seguir con el siguiente intermediario o controlador
+            next();
+
+        } catch (error) {
+            // return res.status(401).json({
+            //     mensaje: 'Falló la autenticación con el token, token invalido',
+            //     error: error.message
+            // });
+            console.log(error.message);
+        }
     }
 }
-
-
-
 export default auth;
