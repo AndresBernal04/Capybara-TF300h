@@ -2,9 +2,9 @@
 
 
 :root{
-    --grisOscuro: #111111;
-    --blanco: #e4e4e4;
-    --turquesa: #007f92;
+    --colorFondo: #111111;
+    --colorTexto: #e4e4e4;
+    --colorEnfasis: #007f92;
 
     --typografiaTitulos: Arial, Helvetica, sans-serif;
     --typografiaTexto: sans-serif;
