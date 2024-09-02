@@ -14,7 +14,7 @@ import { verifyToken } from "../lib/jwt.js";
 const auth = (requiredRole) => {
 
     return async (req, res, next) => {
-        
+
         // Validación de que se pasó un token
         let token = req.headers["authorization"];
 
@@ -28,7 +28,7 @@ const auth = (requiredRole) => {
 
         // Se extrae el token que se necesita, quitando la palabra Bearer
         token = token.split(" ")[1];
-        if(!token){
+        if (!token) {
             return res.status(400).json({
                 mensaje: 'Token no autorizado'
             });
@@ -37,28 +37,26 @@ const auth = (requiredRole) => {
         // Verificación del token
         try {
 
-            console.log("Token", token);
             // Se decodifica el token
             const decoded = await verifyToken(token);
-            console.log("Token decodificado: ", decoded);
-            console.log(requiredRole);
 
             // Validación de rol
-            // if (requiredRole == 'admin' && ) {
-            //     mensaje: 'Acceso denegado, no tiene permisos de administrador'
-            // }
-            // req.user = decoded;
+            if (requiredRole == 'admin' && !decoded.isAdmin) {
+                return res.status(403).json({
+                    mensaje: 'Acceso denegado, no tiene permisos de administrador',
+                });
+            }
+            req.user = decoded;
 
 
             // next -> indica que debe seguir con el siguiente intermediario o controlador
             next();
 
         } catch (error) {
-            // return res.status(401).json({
-            //     mensaje: 'Falló la autenticación con el token, token invalido',
-            //     error: error.message
-            // });
-            console.log(error.message);
+            return res.status(401).json({
+                mensaje: 'Falló la autenticación con el token, token invalido',
+                error: error.message
+            });
         }
     }
 }

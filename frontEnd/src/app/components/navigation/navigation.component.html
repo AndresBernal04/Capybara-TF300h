@@ -9,9 +9,10 @@
           <a class="nav-link active" aria-current="page" routerLink="home">Inicio</a>
           <a class="nav-link" routerLink="contact">Contacto</a>
           <a class="nav-link" routerLink="galery">Portafolio</a>
+          <a class="nav-link" routerLink="login" (click)="toggleLogin()">Iniciar sesión</a>
 
-          <button data-mdb-ripple-init type="button" class="btn btn-light me-3" (click)="toggleLogin()">Iniciar sesión</button>
           <button data-mdb-ripple-init type="button" class="btn btn-light me-3" (click)="toggleRegister()">Registrarse</button>
+          <button data-mdb-ripple-init type="button" class="btn btn-light me-3" (click)="closeSesion()">Cerrar Sesión</button>
         </div>
       </div>
     </div>

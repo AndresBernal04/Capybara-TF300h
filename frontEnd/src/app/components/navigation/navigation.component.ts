@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
+import { LoginService } from '../../../services/login.service';
 
 
 @Component({
@@ -12,9 +13,15 @@ import { RegisterComponent } from '../register/register.component';
   styleUrl: './navigation.component.css'
 })
 
+
 export class NavigationComponent {
+
+  // loginService = inject(LoginService);
+
+
   isVisibleLogin: boolean = false;
   isVisibleRegister: boolean = false;
+
 
   toggleLogin(){
     this.isVisibleLogin = !this.isVisibleLogin;
@@ -25,4 +32,8 @@ export class NavigationComponent {
     this.isVisibleRegister = !this.isVisibleRegister;
     this.isVisibleLogin = false;
   } 
+
+  closeSesion(){
+    // this.loginService.logout()
+  }
 }
